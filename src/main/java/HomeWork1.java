@@ -36,9 +36,7 @@ public class HomeWork1 {
         int i = beginNum;
         while (i % divider != 0) i++; // находим первое кратное число
 
-        int arrLength = (endNum - beginNum) / divider; // находим количество вхождений делителя
-
-        if (beginNum < 0 && endNum > 0) arrLength++; //добавляем 1 если проходит через 0
+        int arrLength = (endNum - beginNum) / divider;
 
         int[] numArr = new int[arrLength];
 
@@ -53,7 +51,7 @@ public class HomeWork1 {
     }
 
     public static int[] getNotMultiples(int beginNum, int endNum, int divider) {
-        int NumberOfMultiples = (endNum - beginNum) / divider - 1; // находим количество кратных
+        int NumberOfMultiples = (endNum - beginNum) / divider - 1;
 
         int size = endNum - beginNum - NumberOfMultiples; //вычисляем размер масива некратных за вычетом количества кратных
 

@@ -14,11 +14,11 @@ import java.util.Random;
 public class HomeWork1 {
     public static void main(String[] args) {
 
-        int i = getRandomInt(2000);
+        int i = new Random().nextInt(2000);
 
         System.out.print(i + " ");
         System.out.println(Integer.toBinaryString(i));
-        int n = getMSb3(i);
+        int n = getMSb(i);
         System.out.print(n + " ");
         System.out.println(Integer.toBinaryString(n));
 
@@ -58,22 +58,19 @@ public class HomeWork1 {
         return number - (number >> 1); // вычитаем от полученного результата сдвинутый на 1 бит получаем MSb
     }
 
-    public static int getRandomInt(int maxValue) {
-        return new Random().nextInt(maxValue);
-    }
-
-
     public static int[] getMultiples(int beginNum, int endNum, int divider) {
         int i = beginNum;
-        while (i % divider != 0) i++; // находим пераое кратное число
+        while (i % divider != 0) i++; // находим первое кратное число
 
-        int count = (endNum - beginNum) / divider; // находим количество вхождений делителя
+        int arrLength = (endNum - beginNum) / divider; // находим количество вхождений делителя
 
-        if (beginNum < 0 && endNum > 0) count++;
+        if (beginNum < 0 && endNum > 0) arrLength++; //добавляем 1 если проходит через 0
 
-        int[] numArr = new int[count];
+        int[] numArr = new int[arrLength];
+
+//        добавляем числа кратные делителю
         int tmp = i;
-        for (i = 0; i < count; i++) {
+        for (i = 0; i < arrLength; i++) {
             numArr[i] = tmp;
             tmp += divider;
         }
@@ -82,33 +79,26 @@ public class HomeWork1 {
     }
 
     public static int[] getNotMultiples(int beginNum, int endNum, int divider) {
-        int[] mults = getMultiples(beginNum, endNum, divider);
-        int size = endNum - beginNum - mults.length;
+        int[] mults = getMultiples(beginNum, endNum, divider); //находим кратные :)
+
+        int size = endNum - beginNum - mults.length; //вычисляем размер масива некратных за вычетом количества кратных
 
         int[] newArr = new int[size];
 
+        //заполняем массив некратных диапазоном между кратными
         int i = 0;
         int k = 0;
         for (int mult : mults) {
             for (k = beginNum; k < mult; k++) {
-                try {
-                    newArr[i] = k;
-                    i++;
-                } catch (Exception ex) {
-                    System.out.println(ex.getMessage());
-                }
-
+                newArr[i] = k;
+                i++;
             }
             beginNum = k + 1;
         }
 
-        for (k = beginNum; k < endNum ; k++) {
-            try {
-                newArr[i] = k;
-                i++;
-            } catch (Exception ex) {
-                System.out.println(ex.getMessage());
-            }
+        for (k = beginNum; k < endNum; k++) {
+            newArr[i] = k;
+            i++;
         }
 
         return newArr;

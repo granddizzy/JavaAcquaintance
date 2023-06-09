@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.Map;
 import java.util.Random;
 
 //1. Выбросить случайное целое число в диапазоне от 0 до 2000 и сохранить в i
@@ -33,7 +32,6 @@ public class HomeWork1 {
         return Integer.toBinaryString(Math.abs(number)).length();
     }
 
-
     public static int[] getMultiples(int beginNum, int endNum, int divider) {
         int i = beginNum;
         while (i % divider != 0) i++; // находим первое кратное число
@@ -55,24 +53,33 @@ public class HomeWork1 {
     }
 
     public static int[] getNotMultiples(int beginNum, int endNum, int divider) {
-        int[] mults = getMultiples(beginNum, endNum, divider); //находим кратные
+        int NumberOfMultiples = (endNum - beginNum) / divider - 1; // находим количество кратных
 
-        int size = endNum - beginNum - mults.length; //вычисляем размер масива некратных за вычетом количества кратных
+        int size = endNum - beginNum - NumberOfMultiples; //вычисляем размер масива некратных за вычетом количества кратных
 
         int[] newArr = new int[size];
 
+        int i = 0; // индексация массива
+
+        int endMultNum = beginNum + NumberOfMultiples * divider;
+
+//        находим первое вхождение кратного числа
+        while (beginNum % divider != 0) {
+            newArr[i] = beginNum;
+            i++;
+            beginNum++;
+        }
+
         //заполняем массив некратных диапазоном между кратными
-        int i = 0;
         int k = 0;
-        for (int mult : mults) {
-            for (k = beginNum; k < mult; k++) {
+        for (int j = beginNum; j < endMultNum; j += divider) {
+            for (k = j + 1; k < j + divider; k++) {
                 newArr[i] = k;
                 i++;
             }
-            beginNum = k + 1;
         }
 
-        for (k = beginNum; k < endNum; k++) {
+        for (k = k + 1; k <= endNum; k++) {
             newArr[i] = k;
             i++;
         }

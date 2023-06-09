@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Map;
 import java.util.Random;
 
 //1. Выбросить случайное целое число в диапазоне от 0 до 2000 и сохранить в i
@@ -22,18 +23,16 @@ public class HomeWork1 {
         System.out.print(n + " ");
         System.out.println(Integer.toBinaryString(n));
 
-        System.out.println(Short.MAX_VALUE);
         int[] m1 = getMultiples(i, Short.MAX_VALUE, n);
         System.out.println(Arrays.toString(m1));
 
-        System.out.println(Short.MIN_VALUE);
         int[] m2 = getNotMultiples(Short.MIN_VALUE, i, n);
         System.out.println(Arrays.toString(m2));
 
     }
 
     public static int getMSb(int number) {
-        String numString = Integer.toBinaryString(number);
+        String numString = Integer.toBinaryString(Math.abs(number));
         StringBuilder sb = new StringBuilder(numString);
 
         for (int i = 1; i < sb.length(); i++) sb.setCharAt(i, '0');
@@ -42,13 +41,14 @@ public class HomeWork1 {
     }
 
     public static int getMSb2(int number) {
-        int numberOfBits = Integer.toBinaryString(number).length();
+        int numberOfBits = Integer.toBinaryString(Math.abs(number)).length();
         int testMSb = 1 << numberOfBits; //сдвигаем 1 на количество максимальных разрядов побитово
         while (testMSb > number) testMSb >>= 1; //пока сдвинутое число больше i сдвигаем по 1 биту
         return testMSb;
     }
 
     public static int getMSb3(int number) {
+        number = Math.abs(number);
 //        заменяем все последующие биты на 1
         number |= number >> 1;
         number |= number >> 2;

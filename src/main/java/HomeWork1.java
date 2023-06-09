@@ -20,7 +20,8 @@ public class HomeWork1 {
         int n = getNumberMSb(i);
         System.out.println(n);
 
-        int[] m1 = getMultiples(i, Short.MAX_VALUE, n);
+//        int[] m1 = getMultiples(i, Short.MAX_VALUE, n);
+        int[] m1 = getMultiples(1000, 2000, 10);
         System.out.println(Arrays.toString(m1));
 
         int[] m2 = getNotMultiples(Short.MIN_VALUE, i, n);
@@ -36,9 +37,7 @@ public class HomeWork1 {
         int i = beginNum;
         while (i % divider != 0) i++; // находим первое кратное число
 
-        int arrLength = (endNum - beginNum) / divider; // находим количество вхождений делителя
-
-        if (beginNum < 0 && endNum > 0) arrLength++; //добавляем 1 если проходит через 0
+        int arrLength = (endNum - beginNum) / divider + 1;
 
         int[] numArr = new int[arrLength];
 
@@ -53,7 +52,7 @@ public class HomeWork1 {
     }
 
     public static int[] getNotMultiples(int beginNum, int endNum, int divider) {
-        int NumberOfMultiples = (endNum - beginNum) / divider - 1; // находим количество кратных
+        int NumberOfMultiples = (endNum - beginNum) / divider - 1;
 
         int size = endNum - beginNum - NumberOfMultiples; //вычисляем размер масива некратных за вычетом количества кратных
 

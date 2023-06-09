@@ -17,11 +17,9 @@ public class HomeWork1 {
 
         int i = new Random().nextInt(2000);
 
-        System.out.print(i + " ");
-        System.out.println(Integer.toBinaryString(i));
-        int n = getMSb(i);
-        System.out.print(n + " ");
-        System.out.println(Integer.toBinaryString(n));
+        System.out.println(i + " ");
+        int n = getNumberMSb(i);
+        System.out.println(n);
 
         int[] m1 = getMultiples(i, Short.MAX_VALUE, n);
         System.out.println(Arrays.toString(m1));
@@ -29,6 +27,10 @@ public class HomeWork1 {
         int[] m2 = getNotMultiples(Short.MIN_VALUE, i, n);
         System.out.println(Arrays.toString(m2));
 
+    }
+
+    public static int getNumberMSb(int number) {
+        return Integer.toBinaryString(Math.abs(number)).length();
     }
 
     public static int getMSb(int number) {
@@ -79,7 +81,7 @@ public class HomeWork1 {
     }
 
     public static int[] getNotMultiples(int beginNum, int endNum, int divider) {
-        int[] mults = getMultiples(beginNum, endNum, divider); //находим кратные :)
+        int[] mults = getMultiples(beginNum, endNum, divider); //находим кратные
 
         int size = endNum - beginNum - mults.length; //вычисляем размер масива некратных за вычетом количества кратных
 

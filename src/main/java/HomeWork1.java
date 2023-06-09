@@ -33,32 +33,6 @@ public class HomeWork1 {
         return Integer.toBinaryString(Math.abs(number)).length();
     }
 
-    public static int getMSb(int number) {
-        String numString = Integer.toBinaryString(Math.abs(number));
-        StringBuilder sb = new StringBuilder(numString);
-
-        for (int i = 1; i < sb.length(); i++) sb.setCharAt(i, '0');
-
-        return Integer.parseInt(sb.toString(), 2);
-    }
-
-    public static int getMSb2(int number) {
-        int numberOfBits = Integer.toBinaryString(Math.abs(number)).length();
-        int testMSb = 1 << numberOfBits; //сдвигаем 1 на количество максимальных разрядов побитово
-        while (testMSb > number) testMSb >>= 1; //пока сдвинутое число больше i сдвигаем по 1 биту
-        return testMSb;
-    }
-
-    public static int getMSb3(int number) {
-        number = Math.abs(number);
-//        заменяем все последующие биты на 1
-        number |= number >> 1;
-        number |= number >> 2;
-        number |= number >> 4;
-        number |= number >> 8;
-        number |= number >> 16;
-        return number - (number >> 1); // вычитаем от полученного результата сдвинутый на 1 бит получаем MSb
-    }
 
     public static int[] getMultiples(int beginNum, int endNum, int divider) {
         int i = beginNum;
@@ -105,20 +79,4 @@ public class HomeWork1 {
 
         return newArr;
     }
-
-
-//    public static void bits() {
-//        int a = 3;
-//        int b = 6;
-//        int c = a | b;
-//        int d = a & b;
-//        int e = a ^ b;
-//        int f = ~b;
-//        System.out.println("a = " + Integer.toBinaryString(a));
-//        System.out.println("b = " + Integer.toBinaryString(b));
-//        System.out.println("a | b = " + Integer.toBinaryString(c));
-//        System.out.println("a & b = " + Integer.toBinaryString(d));
-//        System.out.println("a ^ b = " + Integer.toBinaryString(e));
-//        System.out.println("~ b = " + Integer.toBinaryString(f));
-//    }
 }

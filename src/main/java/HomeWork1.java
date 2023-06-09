@@ -52,25 +52,27 @@ public class HomeWork1 {
     }
 
     public static int[] getNotMultiples(int beginNum, int endNum, int divider) {
-        int NumberOfMultiples = (endNum - beginNum) / divider - 1;
+        if (endNum % divider == 0) endNum--;
+        if (beginNum % divider == 0) beginNum++;
+        int NumberOfMultiples = (endNum - beginNum) / divider;
 
-        int size = endNum - beginNum - NumberOfMultiples; //вычисляем размер масива некратных за вычетом количества кратных
+        int size = endNum - beginNum - NumberOfMultiples + 1; //вычисляем размер масива некратных за вычетом количества кратных
 
         int[] newArr = new int[size];
 
         int i = 0; // индексация массива
 
-        int endMultNum = beginNum + NumberOfMultiples * divider;
-
-//        находим первое вхождение кратного числа
+//      находим первое вхождение кратного числа
         while (beginNum % divider != 0) {
             newArr[i] = beginNum;
             i++;
             beginNum++;
         }
 
+        int endMultNum = beginNum + (NumberOfMultiples - 1) * divider;
+
         //заполняем массив некратных диапазоном между кратными
-        int k = 0;
+        int k = beginNum;
         for (int j = beginNum; j < endMultNum; j += divider) {
             for (k = j + 1; k < j + divider; k++) {
                 newArr[i] = k;

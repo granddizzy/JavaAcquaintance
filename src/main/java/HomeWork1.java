@@ -37,6 +37,7 @@ public class HomeWork1 {
         while (i % divider != 0) i++; // находим первое кратное число
 
         int arrLength = (endNum - beginNum) / divider;
+        if (beginNum % divider == 0) arrLength++;
 
         int[] numArr = new int[arrLength];
 

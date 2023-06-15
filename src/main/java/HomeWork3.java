@@ -35,10 +35,28 @@ public class HomeWork3 {
     }
 
     public static Integer getMin(ArrayList<Integer> list) {
+//        if (list.size() == 0) return 0;
+//        int min = list.get(0);
+//        for (int i=1; i<list.size(); i++ ) {
+//            if (list.get(i) < min) {
+//                min = list.get(i);
+//            }
+//        }
+//        return min;
+
         return Collections.min(list);
     }
 
     public static Integer getMax(ArrayList<Integer> list) {
+//        if (list.size() == 0) return 0;
+//        int max = list.get(0);
+//        for (int i=1; i<list.size(); i++ ) {
+//            if (list.get(i) > max) {
+//                max = list.get(i);
+//            }
+//        }
+//        return max;
+
         return Collections.max(list);
     }
 

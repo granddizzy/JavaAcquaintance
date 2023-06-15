@@ -68,10 +68,8 @@ public class HomeWork2 {
         String[] data;
         for (String el : arrData) {
             data = el.split(":");
-            sb.append(data[0]);
-            sb.append("=");
-            sb.append(data[1]);
-            sb.append(", ");
+
+            if (!data[1].equals("null")) sb.append(data[0]).append("=").append(data[1]).append(", ");
         }
 
         sb.delete(sb.length() - 2, sb.length());
@@ -88,13 +86,7 @@ public class HomeWork2 {
 
             String[] data1 = data[i].replace("{", "").replace("}", "").replace("\"", "").split(",");
 
-            sb.append("Студент ");
-            sb.append(data1[0].split(":")[1]);
-            sb.append(" получил ");
-            sb.append(data1[1].split(":")[1]);
-            sb.append(" по предмету ");
-            sb.append(data1[2].split(":")[1]);
-            sb.append(".");
+            sb.append("Студент ").append(data1[0].split(":")[1]).append(" получил ").append(data1[1].split(":")[1]).append(" по предмету ").append(data1[2].split(":")[1]).append(".");
 
             res[i] = sb.toString();
         }
@@ -117,7 +109,6 @@ public class HomeWork2 {
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < size; i++) {
-//            sb.append("a");
             sb.append((char) new Random().nextInt(97, 100));
         }
 

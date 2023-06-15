@@ -18,7 +18,7 @@ public class seminar2 {
             System.out.println("Строка содержит");
         }
         else {
-            System.out.println("Строка не содердит");
+            System.out.println("Строка не содерждит");
         }
     }
 

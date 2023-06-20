@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 public class HomeWork4 {
     public static void main(String[] args) {
@@ -31,15 +29,18 @@ public class HomeWork4 {
             ArrayList<String> phones = contacts.get(name);
             phones.add(phone);
         } else {
-           ArrayList<String> phones = new ArrayList<String>();
-           phones.add(phone);
-           contacts.put(name, phones);
+            ArrayList<String> phones = new ArrayList<String>();
+            phones.add(phone);
+            contacts.put(name, phones);
         }
     }
 
     public static void showContacts(HashMap<String, ArrayList<String>> contacts) {
-        for (var item : contacts.entrySet()) {
-            System.out.println(item.getKey() + " - " + item.getValue().toString());
+        String[] keys = contacts.keySet().toArray(new String[0]);
+        Arrays.sort(keys, (o1, o2) -> contacts.get(o2).size() - contacts.get(o1).size());
+
+        for (String key : keys) {
+            System.out.println(key + " " + contacts.get(key).toString());
         }
     }
 

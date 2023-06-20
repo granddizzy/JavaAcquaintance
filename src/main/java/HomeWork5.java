@@ -26,31 +26,29 @@ public class HomeWork5 {
     }
 
     public static void addContact(Scanner scanner, HashMap<String, ArrayList<String>> contacts) {
-        System.out.println("Введите имя:");
+        System.out.print("Введите имя:");
         String name = scanner.nextLine();
-        System.out.println("Введите телефон:");
+        System.out.print("Введите телефон:");
         String phone = scanner.nextLine();
 
         //если ключ (имя) уже есть
         if (contacts.containsKey(name)) {
-            //получаем лист телефонов
-            ArrayList<String> phones = contacts.get(name);
-            //добавляем новый
-            phones.add(phone);
+            //получаем лист телефонов и добавляем новый
+            contacts.get(name).add(phone);
         } else {
             //иначе создаем новый лист телефонов
-            ArrayList<String> phones = new ArrayList<String>();
+            ArrayList<String> phones = new ArrayList<>();
             //добавляем новый
             phones.add(phone);
-            //добавляем в хешмап
+            //добавляем в хешмапу
             contacts.put(name, phones);
         }
     }
 
     public static void showContacts(HashMap<String, ArrayList<String>> contacts) {
-        //получаем набор ключей из хешмапа и преобразуем в массив строк для чего передаем в toArray нулевую строку
+        //получаем набор ключей из хешмапы и преобразуем в массив строк для чего передаем в toArray нулевую строку
         String[] keys = contacts.keySet().toArray(new String[0]);
-        //сортируем массив ключей используя компаратор по размеру ArrayList телефонов который в значениях хешмапа
+        //сортируем массив ключей по размеру ArrayList телефонов который в значениях хешмапы
         Arrays.sort(keys, (o1, o2) -> contacts.get(o2).size() - contacts.get(o1).size());
 
         //выводим сортированный массив ключей (имен) и по нему получаем телефоны

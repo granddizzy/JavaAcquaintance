@@ -33,8 +33,10 @@ public class HomeWork5 {
 
         //если ключ (имя) уже есть
         if (contacts.containsKey(name)) {
-            //получаем лист телефонов и добавляем новый
-            contacts.get(name).add(phone);
+            //получаем лист телефонов
+            ArrayList<String> phones = contacts.get(name);
+            //добавляем новый если его там нет
+            if (!phones.contains(phone)) phones.add(phone);
         } else {
             //иначе создаем новый лист телефонов
             ArrayList<String> phones = new ArrayList<>();

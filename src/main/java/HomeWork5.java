@@ -23,6 +23,7 @@ public class HomeWork5 {
                 case "2" -> addContact(scanner, contacts);
             }
         }
+        scanner.close();
     }
 
     public static void addContact(Scanner scanner, HashMap<String, ArrayList<String>> contacts) {
